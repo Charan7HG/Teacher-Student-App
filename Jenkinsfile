@@ -6,9 +6,6 @@ pipeline {
         GIT_HOME = 'C:\\Users\\charan.hg\\AppData\\Local\\Programs\\Git\\cmd'
         DOCKER_HOME = 'C:\\Users\\charan.hg\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin'
         PATH = "${GIT_HOME};${DOCKER_HOME};${env.PATH}"
-        
-        // FIX: Force Playwright to download and read browsers from the current Jenkins workspace project folder
-        PLAYWRIGHT_BROWSERS_PATH = "${WORKSPACE}\\playright\\.cache"
     }
 
     stages {
@@ -67,13 +64,13 @@ pipeline {
                     cd playright
 
                     echo ===== NPM CI =====
-                    npm ci
+                    制造 npm ci
 
                     echo ===== PLAYWRIGHT VERSION =====
                     npx playwright --version
 
-                    echo ===== INSTALLING CHROMIUM =====
-                    set PLAYWRIGHT_BROWSERS_PATH=%WORKSPACE%\\playright\\.cache
+                    echo ===== INSTALLING CHROMIUM LOCAL CACHE =====
+                    set PLAYWRIGHT_BROWSERS_PATH=C:\\ProgramData\\Jenkins\\.jenkins\workspace\\Teacher_Student_App\\playright\\.cache
                     npx playwright install chromium
 
                     echo ===== VERIFYING BROWSER INSTALLATION =====
@@ -149,7 +146,7 @@ pipeline {
 
                 bat '''
                     cd playright
-                    set PLAYWRIGHT_BROWSERS_PATH=%WORKSPACE%\\playright\\.cache
+                    set PLAYWRIGHT_BROWSERS_PATH=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Teacher_Student_App\\playright\\.cache
                     npx playwright test --workers=1 --grep-invert "Debug artifacts demo"
                 '''
             }
