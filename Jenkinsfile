@@ -33,18 +33,6 @@ pipeline {
             }
         }
 
-        stage('Checkout') {
-    steps {
-        echo 'Checking out source code from GitHub...'
-
-        checkout scmGit(
-            branches: [[name: 'main']],
-            userRemoteConfigs: [[
-                url: 'https://github.com/Charan7HG/Teacher-Student-App'
-            ]]
-        )
-    }
-}
         stage('Backend Build') {
             steps {
                 echo 'Building Spring Boot backend...'
@@ -67,79 +55,89 @@ pipeline {
                 '''
             }
         }
-stage('Install Playwright Dependencies') {
-    steps {
-        echo 'Installing Playwright dependencies and Chromium...'
 
-        bat '''
-            cd playright
+        stage('Install Playwright Dependencies') {
+            steps {
+                echo 'Installing Playwright dependencies and Chromium...'
 
-            echo ===== NPM CI =====
-            npm ci
+                bat '''
+                    cd playright
 
-            echo ===== INSTALLING CHROMIUM =====
-            npx playwright install chromium
+                    echo ===== NPM CI =====
+                    npm ci
 
-            echo ===== CHROMIUM INSTALLATION COMPLETE =====
-        '''
-    }
-}
+                    echo ===== PLAYWRIGHT VERSION =====
+                    npx playwright --version
 
-       stage('Start Application') {
-    steps {
-        echo 'Starting application using Docker Compose...'
+                    echo ===== INSTALLING CHROMIUM =====
+                    npx playwright install chromium
 
-        bat '''
-            docker-compose down || exit /b 0
-            docker-compose up -d --build
-        '''
-    }
-}
-       stage('Wait for Application') {
-    steps {
-        echo 'Waiting for application to become ready...'
+                    echo ===== VERIFYING BROWSER INSTALLATION =====
+                    npx playwright install --list
 
-        bat '''
-            echo Checking frontend...
+                    echo ===== CHROMIUM INSTALLATION COMPLETE =====
+                '''
+            }
+        }
 
-            for /L %%i in (1,1,12) do (
-                curl --fail http://localhost:5173/login >nul 2>&1
-                if not errorlevel 1 (
-                    echo Frontend is ready.
-                    goto frontend_ready
-                )
+        stage('Start Application') {
+            steps {
+                echo 'Starting application using Docker Compose...'
 
-                echo Frontend not ready yet. Waiting 5 seconds...
-                ping 127.0.0.1 -n 6 >nul
-            )
+                bat '''
+                    docker-compose down || exit /b 0
+                    docker-compose up -d --build
+                '''
+            }
+        }
 
-            echo Frontend failed to start.
-            exit /b 1
+        stage('Wait for Application') {
+            steps {
+                echo 'Waiting for application to become ready...'
 
-            :frontend_ready
-            echo Checking backend...
+                bat '''
+                    echo Checking frontend...
 
-            for /L %%i in (1,1,24) do (
-                curl --fail http://localhost:8081/api/students >nul 2>&1
-                if not errorlevel 1 (
-                    echo Backend is ready.
-                    goto backend_ready
-                )
+                    for /L %%i in (1,1,12) do (
+                        curl --fail http://localhost:5173/login >nul 2>&1
 
-                echo Backend not ready yet. Waiting 5 seconds...
-                ping 127.0.0.1 -n 6 >nul
-            )
+                        if not errorlevel 1 (
+                            echo Frontend is ready.
+                            goto frontend_ready
+                        )
 
-            echo Backend failed to start.
-            exit /b 1
+                        echo Frontend not ready yet. Waiting 5 seconds...
+                        ping 127.0.0.1 -n 6 >nul
+                    )
 
-            :backend_ready
-            echo =====================================
-            echo APPLICATION IS READY
-            echo =====================================
-        '''
-    }
-}
+                    echo Frontend failed to start.
+                    exit /b 1
+
+                    :frontend_ready
+                    echo Checking backend...
+
+                    for /L %%i in (1,1,24) do (
+                        curl --fail http://localhost:8081/api/students >nul 2>&1
+
+                        if not errorlevel 1 (
+                            echo Backend is ready.
+                            goto backend_ready
+                        )
+
+                        echo Backend not ready yet. Waiting 5 seconds...
+                        ping 127.0.0.1 -n 6 >nul
+                    )
+
+                    echo Backend failed to start.
+                    exit /b 1
+
+                    :backend_ready
+                    echo =====================================
+                    echo APPLICATION IS READY
+                    echo =====================================
+                '''
+            }
+        }
 
         stage('Run Playwright Tests') {
             steps {
