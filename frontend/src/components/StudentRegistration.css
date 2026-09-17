@@ -1,0 +1,509 @@
+.student-page {
+    min-height: 100vh;
+    padding: 40px;
+    box-sizing: border-box;
+
+    background: #f1f5f9;
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* Main Card */
+
+.student-card {
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    padding: 40px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+}
+
+
+/* Header */
+
+.form-header {
+    text-align: center;
+
+    margin-bottom: 35px;
+}
+
+.form-header h1 {
+    margin: 0 0 8px;
+
+    color: #0f172a;
+
+    font-size: 30px;
+
+    font-weight: 700;
+}
+
+.form-header p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 15px;
+}
+
+
+/* Form Group */
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+
+/* Labels */
+
+.form-group > label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #334155;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+
+/* Text Inputs */
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #0f172a;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+
+/* Placeholder */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+
+    color: #94a3b8;
+}
+
+
+/* Focus */
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group input[type="date"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+
+/* Textarea */
+
+.form-group textarea {
+
+    resize: vertical;
+
+    min-height: 100px;
+}
+
+
+/* Radio Buttons */
+
+.radio-group {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+}
+
+.radio-option {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #334155;
+
+    font-size: 15px;
+
+    font-weight: normal;
+
+    cursor: pointer;
+}
+
+.radio-option input {
+
+    width: 16px;
+
+    height: 16px;
+
+    margin: 0;
+
+    accent-color: #2563eb;
+
+    cursor: pointer;
+}
+
+
+/* Checkboxes */
+
+.checkbox-group {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 20px 30px;
+}
+
+.checkbox-option {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #334155;
+
+    font-size: 15px;
+
+    font-weight: normal;
+
+    cursor: pointer;
+}
+
+.checkbox-option input {
+
+    width: 16px;
+
+    height: 16px;
+
+    margin: 0;
+
+    accent-color: #2563eb;
+
+    cursor: pointer;
+}
+
+
+/* Custom Dropdown */
+
+.custom-dropdown {
+
+    position: relative;
+
+    width: 100%;
+}
+
+
+/* Dropdown Button */
+
+.dropdown-button {
+
+    width: 100%;
+
+    height: 46px;
+
+    padding: 0 14px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    font-size: 15px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.dropdown-button:hover {
+
+    border-color: #2563eb;
+}
+
+.dropdown-button:focus {
+
+    outline: none;
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+
+/* Dropdown Arrow */
+
+.dropdown-arrow {
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+/* Dropdown Menu */
+
+.dropdown-menu {
+
+    position: absolute;
+
+    top: calc(100% + 5px);
+
+    left: 0;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    box-shadow:
+        0 8px 20px rgba(15, 23, 42, 0.12);
+
+    overflow: hidden;
+
+    z-index: 100;
+}
+
+
+/* Dropdown Option */
+
+.dropdown-option {
+
+    padding: 12px 14px;
+
+    color: #334155;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.15s;
+}
+
+.dropdown-option:hover {
+
+    background: #eff6ff;
+
+    color: #2563eb;
+}
+
+
+/* Selected Option */
+
+.dropdown-option[aria-selected="true"] {
+
+    background: #dbeafe;
+
+    color: #1d4ed8;
+
+    font-weight: 600;
+}
+
+
+/* Register Button */
+
+.register-button {
+
+    width: 100%;
+
+    height: 48px;
+
+    margin-top: 10px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.register-button:hover {
+
+    background: #1d4ed8;
+}
+
+.register-button:active {
+
+    transform: translateY(1px);
+}
+
+
+/* Responsive */
+
+@media (max-width: 600px) {
+
+    .student-page {
+
+        padding: 20px;
+    }
+
+    .student-card {
+
+        padding: 25px;
+    }
+
+    .radio-group {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+}
+/* City Auto Suggestion */
+
+.city-autocomplete {
+    position: relative;
+    width: 100%;
+}
+
+.city-autocomplete input {
+    width: 100%;
+    height: 46px;
+
+    box-sizing: border-box;
+
+    padding: 0 14px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+
+    background: #ffffff;
+    color: #0f172a;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.city-autocomplete input::placeholder {
+    color: #94a3b8;
+}
+
+.city-autocomplete input:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.city-suggestions {
+    position: absolute;
+
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+
+    background: #ffffff;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+
+    box-shadow:
+        0 8px 20px rgba(15, 23, 42, 0.12);
+
+    overflow: hidden;
+
+    z-index: 200;
+}
+
+.city-option {
+    padding: 12px 14px;
+
+    color: #334155;
+
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+.city-option:hover {
+    background: #eff6ff;
+    color: #2563eb;
+}
+/* Validation Error */
+
+.error-message {
+    margin: 7px 0 0;
+
+    color: #dc2626;
+
+    font-size: 13px;
+
+    font-weight: 500;
+}

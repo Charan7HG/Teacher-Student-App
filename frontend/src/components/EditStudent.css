@@ -1,0 +1,177 @@
+.edit-page {
+    min-height: 100vh;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #f1f5f9;
+    font-family: Arial, sans-serif;
+}
+
+.edit-card {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+}
+
+.edit-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.edit-header h1 {
+    margin: 0 0 8px;
+    color: #0f172a;
+    font-size: 30px;
+}
+
+.edit-header p {
+    margin: 0;
+    color: #64748b;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group > label {
+    display: block;
+    margin-bottom: 8px;
+    color: #334155;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #0f172a;
+    font-size: 15px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.radio-group {
+    display: flex;
+    gap: 30px;
+}
+
+.radio-option,
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #334155;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.radio-option input,
+.checkbox-option input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: #2563eb;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 30px;
+}
+
+.success-message {
+    margin-bottom: 20px;
+    padding: 12px;
+    border-radius: 7px;
+    background: #f0fdf4;
+    color: #16a34a;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.error-message {
+    margin-bottom: 20px;
+    color: #dc2626;
+    font-size: 14px;
+}
+
+.edit-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.update-button,
+.cancel-button,
+.back-button {
+    padding: 11px 20px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.update-button {
+    border: none;
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.update-button:hover {
+    background: #1d4ed8;
+}
+
+.cancel-button,
+.back-button {
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #334155;
+}
+
+.cancel-button:hover,
+.back-button:hover {
+    background: #f8fafc;
+}
+
+@media (max-width: 600px) {
+
+    .edit-page {
+        padding: 20px;
+    }
+
+    .edit-card {
+        padding: 25px;
+    }
+
+    .radio-group {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .edit-actions {
+        flex-direction: column;
+    }
+}
