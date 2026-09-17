@@ -74,13 +74,13 @@ stage('Install Playwright Dependencies') {
         bat '''
             cd playright
 
-            echo ===== BEFORE NPM CI =====
+            echo ===== NPM CI =====
             npm ci
 
             echo ===== INSTALLING CHROMIUM =====
             npx playwright install chromium
 
-            echo ===== CHROMIUM INSTALL FINISHED =====
+            echo ===== CHROMIUM INSTALLATION COMPLETE =====
         '''
     }
 }
