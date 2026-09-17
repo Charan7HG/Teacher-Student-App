@@ -50,8 +50,8 @@ pipeline {
 
                 bat '''
                     cd frontend
-                    npm ci
-                    npm run build
+                    call npm ci
+                    call npm run build
                 '''
             }
         }
@@ -64,17 +64,18 @@ pipeline {
                     cd playright
 
                     echo ===== NPM CI =====
-                    npm ci
+                    // FIX: Prepended "call" so windows doesn't terminate the script here
+                    call npm ci
 
                     echo ===== PLAYWRIGHT VERSION =====
-                    npx playwright --version
+                    call npx playwright --version
 
                     echo ===== INSTALLING CHROMIUM LOCAL CACHE =====
                     set PLAYWRIGHT_BROWSERS_PATH=C:/ProgramData/Jenkins/.jenkins/workspace/Teacher_Student_App/playright/.cache
-                    npx playwright install chromium
+                    call npx playwright install chromium
 
                     echo ===== VERIFYING BROWSER INSTALLATION =====
-                    npx playwright install --list
+                    call npx playwright install --list
 
                     echo ===== CHROMIUM INSTALLATION COMPLETE =====
                 '''
@@ -147,7 +148,7 @@ pipeline {
                 bat '''
                     cd playright
                     set PLAYWRIGHT_BROWSERS_PATH=C:/ProgramData/Jenkins/.jenkins/workspace/Teacher_Student_App/playright/.cache
-                    npx playwright test --workers=1 --grep-invert "Debug artifacts demo"
+                    call npx playwright test --workers=1 --grep-invert "Debug artifacts demo"
                 '''
             }
         }
