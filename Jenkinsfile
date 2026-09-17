@@ -67,15 +67,20 @@ pipeline {
                 '''
             }
         }
-
-       stage('Install Playwright Dependencies') {
+stage('Install Playwright Dependencies') {
     steps {
         echo 'Installing Playwright dependencies and Chromium...'
 
         bat '''
             cd playright
+
+            echo ===== BEFORE NPM CI =====
             npm ci
+
+            echo ===== INSTALLING CHROMIUM =====
             npx playwright install chromium
+
+            echo ===== CHROMIUM INSTALL FINISHED =====
         '''
     }
 }
