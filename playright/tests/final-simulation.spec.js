@@ -162,7 +162,7 @@ test.describe('Final Teacher-Student Management simulation', () => {
 
     const studentListPage = new StudentListPage(page);
     await studentListPage.open();
-    await studentListPage.search(`Final Pagination ${suffix}`);
+   await studentListPage.search(`Pagination ${suffix}`);
 
     await expect(page.locator('tbody tr')).toHaveCount(5);
     await studentListPage.expectPage(1, 2);

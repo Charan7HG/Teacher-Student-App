@@ -4,6 +4,8 @@ package com.project.backend.controller;
 import com.project.backend.dto.LoginRequest;
 import com.project.backend.entity.Teacher;
 import com.project.backend.service.AuthService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,9 +18,15 @@ public class AuthController {
     public AuthController(AuthService authService) {
         this.authService = authService;
     }
-
-    @PostMapping("/login")
-    public Teacher login(@RequestBody LoginRequest request) {
-        return authService.login(request);
+@PostMapping("/login")
+public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+    try {
+        Teacher teacher = authService.login(request);
+        return ResponseEntity.ok(teacher);
+    } catch (RuntimeException ex) {
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
+                .body("Invalid email or password");
     }
+}
 }
