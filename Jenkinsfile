@@ -64,7 +64,6 @@ pipeline {
                     cd playright
 
                     echo ===== NPM CI =====
-                    // FIX: Prepended "call" so windows doesn't terminate the script here
                     call npm ci
 
                     echo ===== PLAYWRIGHT VERSION =====
@@ -95,7 +94,7 @@ pipeline {
 
         stage('Wait for Application') {
             steps {
-                echo 'Waiting for application to become ready...'
+                echo 'Waiting for application and database to become ready...'
 
                 bat '''
                     echo Checking frontend...
@@ -116,14 +115,14 @@ pipeline {
                     exit /b 1
 
                     :frontend_ready
-                    echo Checking backend...
+                    echo Checking backend API...
 
                     for /L %%i in (1,1,24) do (
                         curl --fail http://localhost:8081/api/students >nul 2>&1
 
                         if not errorlevel 1 (
-                            echo Backend is ready.
-                            goto backend_ready
+                            echo Backend API is up. Checking database data initialization...
+                            goto database_check
                         )
 
                         echo Backend not ready yet. Waiting 5 seconds...
@@ -133,9 +132,12 @@ pipeline {
                     echo Backend failed to start.
                     exit /b 1
 
-                    :backend_ready
+                    :database_check
+                    echo Waiting an extra 10 seconds for SQL scripts to populate the database tables...
+                    ping 127.0.0.1 -n 11 >nul
+
                     echo =====================================
-                    echo APPLICATION IS READY
+                    echo APPLICATION AND DATABASE ARE FULLY READY
                     echo =====================================
                 '''
             }
