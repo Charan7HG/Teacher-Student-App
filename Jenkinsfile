@@ -86,7 +86,8 @@ pipeline {
                 echo 'Starting application using Docker Compose...'
 
                 bat '''
-                    docker-compose down || exit /b 0
+                    // FIX: Added -v flag to clear out any old data cache
+                    docker-compose down -v || exit /b 0
                     docker-compose up -d --build
                 '''
             }
@@ -194,7 +195,8 @@ pipeline {
             echo 'Stopping Docker containers...'
 
             bat '''
-                docker-compose down || exit /b 0
+                // FIX: Clears out volume storage on completion
+                docker-compose down -v || exit /b 0
             '''
         }
     }
