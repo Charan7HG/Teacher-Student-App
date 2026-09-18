@@ -88,11 +88,15 @@ pipeline {
                 bat '''
                     docker-compose down -v || exit /b 0
                     
-                    // FIX: Added --no-cache to force docker to copy your clean application.properties and data.sql
-                    docker-compose up -d --build --no-cache
+                    echo ===== FORCING FRESH IMAGE BUILD =====
+                    docker-compose build --no-cache
+                    
+                    echo ===== LAUNCHING CONTAINERS =====
+                    docker-compose up -d
                 '''
             }
         }
+
         stage('Wait for Application') {
             steps {
                 echo 'Waiting for application and database to become ready...'
@@ -195,7 +199,6 @@ pipeline {
             echo 'Stopping Docker containers...'
 
             bat '''
-                // FIX: Clears out volume storage on completion
                 docker-compose down -v || exit /b 0
             '''
         }
