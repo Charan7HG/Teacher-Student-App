@@ -86,13 +86,13 @@ pipeline {
                 echo 'Starting application using Docker Compose...'
 
                 bat '''
-                    // FIX: Added -v flag to clear out any old data cache
                     docker-compose down -v || exit /b 0
-                    docker-compose up -d --build
+                    
+                    // FIX: Added --no-cache to force docker to copy your clean application.properties and data.sql
+                    docker-compose up -d --build --no-cache
                 '''
             }
         }
-
         stage('Wait for Application') {
             steps {
                 echo 'Waiting for application and database to become ready...'
