@@ -9,6 +9,7 @@ function StudentList() {
     const [error, setError] = useState('');
     const [sortDirection, setSortDirection] = useState('asc');
     const [currentPage, setCurrentPage] = useState(1);
+    const API_URL = import.meta.env.VITE_API_URL;
 
     const studentsPerPage = 5;
 

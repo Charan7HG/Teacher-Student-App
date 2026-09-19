@@ -19,6 +19,7 @@ function EditStudent() {
         city: '',
         address: ''
     });
+    const API_URL = import.meta.env.VITE_API_URL;
 
     const [loading, setLoading] = useState(true);
     const [message, setMessage] = useState('');

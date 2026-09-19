@@ -10,6 +10,7 @@ function StudentRegistration() {
     const [showSuggestions, setShowSuggestions] = useState(false);
 
     const [errors, setErrors] = useState({});
+    const API_URL = import.meta.env.VITE_API_URL;
 
     const sections = ['A', 'B', 'C', 'D'];
 
