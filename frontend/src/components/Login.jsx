@@ -9,13 +9,14 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const API_URL = import.meta.env.VITE_API_URL;
 
     const handleLogin = async (event) => {
         event.preventDefault();
 
         try {
             const response = await fetch(
-                'http://localhost:8081/api/auth/login',
+                `${API_URL}/api/auth/login`,
                 {
                     method: 'POST',
                     headers: {

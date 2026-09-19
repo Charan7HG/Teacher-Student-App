@@ -17,9 +17,7 @@ function Dashboard() {
 
         try {
 
-            const response = await fetch(
-                'http://localhost:8081/api/students'
-            );
+            const response = await fetch(`${API_URL}/api/students`);
 
             if (!response.ok) {
                 throw new Error('Failed to fetch students');

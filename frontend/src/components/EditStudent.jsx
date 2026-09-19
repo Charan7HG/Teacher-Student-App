@@ -46,7 +46,7 @@ function EditStudent() {
         try {
 
             const response = await fetch(
-                `http://localhost:8081/api/students/${id}`
+                `${API_URL}/api/students/${id}`
             );
 
             if (!response.ok) {

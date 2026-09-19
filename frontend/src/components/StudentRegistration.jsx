@@ -111,7 +111,7 @@ function StudentRegistration() {
     console.log('Sending student data:', studentData);
 
     try {
-        const response = await fetch('http://localhost:8081/api/students', {
+        const response = await fetch(`${API_URL}/api/students`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

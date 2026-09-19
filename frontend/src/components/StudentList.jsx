@@ -26,8 +26,7 @@ const handleDelete = async (id) => {
 
     try {
 
-        const response = await fetch(
-            `http://localhost:8081/api/students/${id}`,
+        const response = await fetch(`${API_URL}/api/students/${id}`,
             {
                 method: 'DELETE'
             }
@@ -53,7 +52,7 @@ const handleDelete = async (id) => {
         try {
 
             const response = await fetch(
-                'http://localhost:8081/api/students'
+                `${API_URL}/api/students`
             );
 
             if (!response.ok) {
